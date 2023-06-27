@@ -5,7 +5,7 @@ import { Center, HStack, Text, VStack, FlatList, Heading } from 'native-base'
 import { useState } from 'react'
 
 export function Home() {
-    const [groupSelected, setGroupSelected] = useState('costa')
+    const [groupSelected, setGroupSelected] = useState('costas')
     const [groups, setGroups] = useState(['Costas','Bíceps','Tríceps','Ombro'])
     const [exercises, setExercises] = useState(['Puxda frontal','Remada curvada','Remada unilateral','Levantamento terra'])
     return (
@@ -17,7 +17,7 @@ export function Home() {
                 renderItem={({item})=>(
                     <Group
                         name={item}
-                        isActive={groupSelected === item}
+                        isActive={String(groupSelected).toUpperCase() === String(item).toUpperCase()}
                         onPress={() => setGroupSelected(item)}
                     />
 
