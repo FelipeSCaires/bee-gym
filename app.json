@@ -3,6 +3,7 @@
     "name": "bee-gym",
     "slug": "bee-gym",
     "version": "1.0.0",
+    "scheme": "bee-gym",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -15,13 +16,18 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.felipescaires.beegym"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.felipescaires.beegym"
     },
     "web": {
       "favicon": "./assets/favicon.png"

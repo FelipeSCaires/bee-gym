@@ -5,9 +5,17 @@ import BackgroundImg from '@assets/background.png'
 import LogoSvg from '@assets/logo-horizontal.svg'
 import { Input } from '@components/Input'
 import { Button } from '@components/Button'
+import { useForm, Controller } from 'react-hook-form'
+
 
 export function Signin() {
     const { navigate } = useNavigation<AuthNavigatorRoutesPropps>()
+    const { control, handleSubmit } = useForm()
+
+    function handleSignIn(data: any){
+        console.log(data)
+    }
+
 
     return (
         <ScrollView contentContainerStyle={{flexGrow: 1}} showsVerticalScrollIndicator={false}>
@@ -25,9 +33,32 @@ export function Signin() {
             </Center>
             <Center>
                 <Heading color='gray.100' fontSize='xl' fontFamily='heading' mb={6}>Acesse sua conta</Heading>
-                <Input placeholder='E-mail' keyboardType='email-address' autoCapitalize='none' />
-                <Input placeholder='Senha' secureTextEntry />
-                <Button title='Acessar' />
+                <Controller 
+                    control={control}
+                    name='email'
+                    render={({field : { onChange, value }})=>(
+                        <Input 
+                        placeholder='E-mail'
+                        keyboardType='email-address' 
+                        autoCapitalize='none'
+                        onChangeText={onChange}
+                        value={value}
+                        />
+                    )}
+                />
+                <Controller 
+                    control={control}
+                    name='password'
+                    render={({field : { onChange, value }})=>(
+                        <Input 
+                        placeholder='Senha' 
+                        onChangeText={onChange}
+                        value={value}
+                        secureTextEntry
+                        />
+                    )}
+                />
+                <Button title='Acessar' onPress={handleSubmit(handleSignIn)}/>
             </Center>
             <Center mt={24}>
                 <Text color='gray.100' fontSize='sm' mb={3} fontFamily='body'>
